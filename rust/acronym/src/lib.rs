@@ -1,3 +1,10 @@
+fn from_bool(b: &bool) -> usize {
+    match b {
+        &true => 1,
+        _ => 0
+    }
+}
+
 pub fn abbreviate(phrase: &str) -> String {
     if &phrase.contains(':') == &true {
         return String::from(phrase.get(0..phrase.find(':').unwrap()).unwrap())
@@ -5,17 +12,14 @@ pub fn abbreviate(phrase: &str) -> String {
 
     let m: &Vec<char> = &phrase.chars().collect();
 
-    phrase.chars().enumerate().map(|(i, c)| {
-        let mut i2 = i as i32;
-        if i < 1 {
-            i2 = 1;
-        }
-        
-        if &c.is_uppercase() == &true && !m[(i2 - 1) as usize].is_uppercase() {
-            c
+    let out: String = phrase.chars().enumerate().map(|(i, c)| {
+        let prev_char: &char = m.get((i + from_bool(&(i < 1))) - 1).unwrap_or(&' ');
+        if ((&prev_char == &&' ' || &prev_char == &&'-') && &c.is_alphabetic() == &true) || i < 1 || (&c.is_uppercase() == &true && &prev_char.is_uppercase() == &false) {
+            c.to_uppercase().to_string().chars().nth(0).unwrap()
         }
         else {
             ' '
         }
-    }).collect()
+    }).collect();
+    out.replace(" ", "")
 }
