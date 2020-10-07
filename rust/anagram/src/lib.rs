@@ -14,17 +14,16 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'
                     == &false
         })
         .collect();
-    let mut out: HashSet<&'a str> = HashSet::new();
-    println!("{:?}", v);
     possible_anagrams
         .into_iter()
         .enumerate()
-        .for_each(|(i, s)| {
+        .filter_map(|(i, s)| {
             if &v.get(i).unwrap() == &&true {
-                out.insert(s);
+                return Some(*s);
             }
-        });
-    out
+            None
+        })
+        .collect::<HashSet<&'a str>>()
 }
 
 fn char_instances<'b>(s: &'b str, c: &'b char) -> usize {
