@@ -8,17 +8,7 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'
                 && &s.to_uppercase() != &word.to_uppercase()
                 && &word
                     .chars()
-                    .map(|c| {
-                        &s.to_uppercase()
-                            .matches(&c.to_uppercase().to_string())
-                            .collect::<Vec<&str>>()
-                            .len()
-                            == &word
-                                .to_uppercase()
-                                .matches(&c.to_uppercase().to_string())
-                                .collect::<Vec<&str>>()
-                                .len()
-                    })
+                    .map(|c| char_instances(s, &c) == char_instances(word, &c))
                     .collect::<Vec<bool>>()
                     .contains(&false)
                     == &false
@@ -35,4 +25,11 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &'a [&str]) -> HashSet<&'
             }
         });
     out
+}
+
+fn char_instances<'b>(s: &'b str, c: &'b char) -> usize {
+    s.to_uppercase()
+        .matches(&c.to_uppercase().to_string())
+        .collect::<Vec<&str>>()
+        .len()
 }
