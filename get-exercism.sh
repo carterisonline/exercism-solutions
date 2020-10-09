@@ -21,6 +21,6 @@ export PATH=$PATH:./programs
 cd programs
 chmod +x exercism
 ./exercism configure --token=$EXERCISM_KEY
-./exercism configure --workspace=.
+./exercism configure --workspace=..
 
 cd ..
