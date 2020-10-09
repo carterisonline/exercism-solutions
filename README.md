@@ -5,4 +5,6 @@ All of my exercism.io public solutions in Rust!
 ## Running the Exercism CLI
 - __Running `./get-exercism.sh` will *not* add exercism to your PATH.__
 
-If you're using the [Gitpod workspace](https://www.gitpod.io#https://github.com/carterisonline/exercism-solutions-rs) or another temporary workspace solution, run `source get-exercism.sh` to run the script in your own shell process, and add `./programs` to the PATH. __Running this command multiple times *will* add `./programs` to your path multiple times.__ Not intended for personal workspaces.
+If you're using the [Gitpod workspace](https://www.gitpod.io#https://github.com/carterisonline/exercism-solutions-rs) or another temporary workspace solution:
+- Make sure you've provided Gitpod with your Excercism Key. Run `gp env EXERCISM_KEY=xxxxx` if you haven't already.
+- Run `source get-exercism.sh` to run the script in your own shell process, and add `./programs` to the PATH. __Running this command multiple times *will* add `./programs` to your path multiple times.__ Not intended for personal workspaces.
