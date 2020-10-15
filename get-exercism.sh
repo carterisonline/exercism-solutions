@@ -16,7 +16,7 @@ rm temp -R
 
 mkdir programs
 mv exercism programs/exercism
-export PATH=$PATH:./programs
+export PATH=$PATH:/workspace/exercism-solutions-rs/programs
 
 cd programs
 chmod +x exercism
