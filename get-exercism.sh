@@ -16,7 +16,7 @@ rm temp -R
 
 mkdir programs
 mv exercism programs/exercism
-export PATH=$PATH:/workspace/exercism-solutions-rs/programs
+export PATH=$PATH:$GITPOD_REPO_ROOT/programs
 
 cd programs
 chmod +x exercism
