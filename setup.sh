@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Run `source get-exercism.sh` in order to update environment variables
+# Run `source setup.sh` in order to update environment variables
 
 eval $(gp env -e)
 
