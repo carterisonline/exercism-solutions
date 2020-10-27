@@ -1,5 +1,5 @@
-# exercism-solutions-rs
-All of my exercism.io public solutions in Rust!
+# exercism-solutions
+All of my exercism.io public solutions!
 - Uses the [Exercism](https://exercism.io) CLI to download and submit projects
 
 ## Running the Exercism CLI
