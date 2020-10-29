@@ -9,9 +9,10 @@ mkdir temp
 mkdir .programs
 cd temp
 
-# Download the Exercism Client & Julia Runtime
+# Download the Exercism Client, Julia Runtime & BATS Client
 wget https://github.com/exercism/cli/releases/download/v3.0.13/exercism-3.0.13-linux-x86_64.tar.gz
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.5/julia-1.5.2-linux-x86_64.tar.gz
+git clone https://github.com/sstephenson/bats.git
 
 # Extract tarball and move program out of temp directory
 tar -xf exercism-3.0.13-linux-x86_64.tar.gz
@@ -21,6 +22,7 @@ rm julia-1.5.2-linux-x86_64.tar.gz
 cd ..
 mv temp/exercism .programs/exercism
 mv temp/julia-* .programs
+mv temp/bats .programs
 
 # Clean it up
 rm temp -R
@@ -28,12 +30,14 @@ rm temp -R
 # Export to the `$PATH` variable: !ONLY WORKS WHEN RUNNING `source exercism.sh`!
 export PATH=$PATH:$GITPOD_REPO_ROOT/.programs
 export PATH=$PATH:$GITPOD_REPO_ROOT/.programs/julia-1.5.2/bin
+export PATH=$PATH:$GITPOD_REPO_ROOT/.programs/bats/bin
 
 cd .programs
 
 # Allow Execution of the Exercism CLI
 chmod +x exercism
 chmod +x julia-*/bin/julia
+chmod +x bats/bin/bats
 
 # Provide Exercism with the token; run `gp env EXERCISM_KEY=(your key here)` to sync with your user profile
 ./exercism configure --token=$EXERCISM_KEY
